@@ -61,24 +61,46 @@ const staff = [
   },
 ]
 
+function initialsOf(name) {
+  return name
+    .split(' ')
+    .filter((w) => !w.endsWith('.'))
+    .slice(0, 2)
+    .map((w) => w[0])
+    .join('')
+}
+
 function PersonCard({ p }) {
   const [expanded, setExpanded] = useState(false)
   const long = p.bio.length > 180
   return (
-    <div className="card rounded-2xl p-6">
+    <div className="card card-hover flex flex-col overflow-hidden rounded-xl">
       {p.img && (
-        <img src={p.img} alt={p.name} className="mb-4 h-56 w-full rounded-xl object-cover" />
+        <div className="relative">
+          <img src={p.img} alt={p.name} className="portrait" />
+          <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-panel to-transparent" />
+        </div>
       )}
-      <h3 className="text-lg font-bold text-white">{p.name}</h3>
-      <p className="mb-3 text-sm font-medium text-brand">{p.title}</p>
-      <p className="text-sm leading-relaxed text-white/60">
-        {long && !expanded ? p.bio.slice(0, 180) + '…' : p.bio}
-      </p>
-      {long && (
-        <button onClick={() => setExpanded((v) => !v)} className="mt-2 text-xs font-semibold text-mint hover:underline">
-          {expanded ? 'Show Less' : 'Show More'}
-        </button>
-      )}
+      <div className="flex flex-1 flex-col p-6">
+        {!p.img && (
+          <div className="mb-4 grid h-12 w-12 place-items-center rounded-full border border-line bg-panel-2 text-sm font-bold tracking-wide text-silver">
+            {initialsOf(p.name)}
+          </div>
+        )}
+        <h3 className="text-lg font-bold text-white">{p.name}</h3>
+        <p className="mb-3 text-sm font-medium text-brand-hi">{p.title}</p>
+        <p className="text-sm leading-relaxed text-silver">
+          {long && !expanded ? p.bio.slice(0, 180).trimEnd() + '…' : p.bio}
+        </p>
+        {long && (
+          <button
+            onClick={() => setExpanded((v) => !v)}
+            className="mt-3 self-start text-xs font-semibold text-white hover:text-brand-hi"
+          >
+            {expanded ? 'Show less' : 'Show more'}
+          </button>
+        )}
+      </div>
     </div>
   )
 }
@@ -86,30 +108,26 @@ function PersonCard({ p }) {
 export default function Team() {
   return (
     <>
-      <PageHero eyebrow="Our Team" title="Our Cybersecurity Professionals" />
+      <PageHero
+        eyebrow="Our Team"
+        title="The people behind KeyTrain"
+        subtitle="Cybersecurity, engineering, and business professionals building accessible defense for organizations of every size."
+      />
 
-      <section className="mx-auto max-w-7xl px-5 py-16">
-        <h2 className="mb-8 text-2xl font-bold text-white">Executive Leadership</h2>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {leadership.map((p) => <PersonCard key={p.name} p={p} />)}
-        </div>
-      </section>
-
-      <section className="border-t border-line bg-panel">
-        <div className="mx-auto max-w-7xl px-5 py-16">
-          <h2 className="mb-8 text-2xl font-bold text-white">Vice Presidents</h2>
-          <div className="grid gap-6 sm:grid-cols-2">
-            {vps.map((p) => <PersonCard key={p.name} p={p} />)}
+      {[
+        { heading: 'Executive Leadership', people: leadership },
+        { heading: 'Vice Presidents', people: vps },
+        { heading: 'Staff', people: staff },
+      ].map((group) => (
+        <section key={group.heading} className="mx-auto max-w-7xl px-5 pt-20">
+          <h2 className="mb-8 text-2xl font-bold tracking-tight text-white">{group.heading}</h2>
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {group.people.map((p) => <PersonCard key={p.name} p={p} />)}
           </div>
-        </div>
-      </section>
+        </section>
+      ))}
 
-      <section className="mx-auto max-w-7xl px-5 py-16">
-        <h2 className="mb-8 text-2xl font-bold text-white">Staff</h2>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {staff.map((p) => <PersonCard key={p.name} p={p} />)}
-        </div>
-      </section>
+      <div className="pt-24" />
 
       <CTABanner />
     </>

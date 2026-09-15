@@ -18,50 +18,50 @@ export default function Contact() {
     <>
       <PageHero eyebrow="Contact Us" title="Contact our team below!" />
 
-      <section className="mx-auto max-w-xl px-5 py-16">
-        <form onSubmit={handleSubmit} className="card space-y-5 rounded-2xl p-8">
+      <section className="mx-auto max-w-xl px-5 py-20">
+        <form onSubmit={handleSubmit} className="card space-y-5 rounded-xl p-8">
           <div>
-            <label className="mb-1.5 block text-sm font-medium text-white/80">Name*</label>
+            <label className="mb-1.5 block text-sm font-medium text-silver">Name*</label>
             <input
               required
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
-              className="w-full rounded-lg border border-line bg-ink px-4 py-2.5 text-white outline-none focus:border-brand"
+              className="w-full rounded-lg border border-line bg-ink px-4 py-2.5 text-white outline-none focus:border-brand-hi"
             />
           </div>
           <div>
-            <label className="mb-1.5 block text-sm font-medium text-white/80">Email*</label>
+            <label className="mb-1.5 block text-sm font-medium text-silver">Email*</label>
             <input
               required
               type="email"
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
-              className="w-full rounded-lg border border-line bg-ink px-4 py-2.5 text-white outline-none focus:border-brand"
+              className="w-full rounded-lg border border-line bg-ink px-4 py-2.5 text-white outline-none focus:border-brand-hi"
             />
           </div>
           <div>
-            <label className="mb-1.5 block text-sm font-medium text-white/80">Phone</label>
+            <label className="mb-1.5 block text-sm font-medium text-silver">Phone</label>
             <input
               type="tel"
               value={form.phone}
               onChange={(e) => setForm({ ...form, phone: e.target.value })}
-              className="w-full rounded-lg border border-line bg-ink px-4 py-2.5 text-white outline-none focus:border-brand"
+              className="w-full rounded-lg border border-line bg-ink px-4 py-2.5 text-white outline-none focus:border-brand-hi"
             />
           </div>
           <div>
-            <label className="mb-1.5 block text-sm font-medium text-white/80">Message</label>
+            <label className="mb-1.5 block text-sm font-medium text-silver">Message</label>
             <textarea
               rows={4}
               value={form.message}
               onChange={(e) => setForm({ ...form, message: e.target.value })}
-              className="w-full rounded-lg border border-line bg-ink px-4 py-2.5 text-white outline-none focus:border-brand"
+              className="w-full rounded-lg border border-line bg-ink px-4 py-2.5 text-white outline-none focus:border-brand-hi"
             />
           </div>
-          <button type="submit" className="w-full rounded-full bg-brand px-6 py-3 font-semibold text-ink transition hover:brightness-110">
+          <button type="submit" className="w-full rounded-lg bg-brand px-6 py-3 font-semibold text-white transition hover:bg-brand-hi">
             Send
           </button>
-          {sent && <p className="text-center text-sm text-mint">Opening your email client…</p>}
-          <p className="text-center text-xs text-white/40">
+          {sent && <p className="text-center text-sm text-brand-hi">Opening your email client…</p>}
+          <p className="text-center text-xs text-silver/60">
             This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.
           </p>
         </form>

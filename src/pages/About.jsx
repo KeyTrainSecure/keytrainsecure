@@ -8,8 +8,8 @@ export default function About() {
     <>
       <PageHero eyebrow="About Us" title="About KeyTrain" />
 
-      <section className="mx-auto max-w-4xl px-5 py-16">
-        <div className="space-y-5 text-white/70 leading-relaxed">
+      <section className="mx-auto max-w-4xl px-5 py-20">
+        <div className="space-y-5 text-silver leading-relaxed">
           <p>
             KeyTrain was founded in 2025 with the intent in mind to help organizations keep their missions
             their main focus. We have a dedicated team that has developed Halo, our software platform
@@ -42,15 +42,15 @@ export default function About() {
       </section>
 
       <section className="border-y border-line bg-panel">
-        <div className="mx-auto max-w-4xl px-5 py-16">
-          <span className="text-xs font-semibold uppercase tracking-wider text-brand">Our Mission</span>
-          <p className="mt-4 text-lg leading-relaxed text-white/75">
+        <div className="mx-auto max-w-4xl px-5 py-20">
+          <span className="text-xs font-semibold uppercase tracking-wider text-brand-hi">Our Mission</span>
+          <p className="mt-4 text-lg leading-relaxed text-silver">
             KeyTrain's mission is to empower our customers with an accessible, effective, and sustainable
             cybersecurity solution through modular design, expert-grade protection, and intuitive usability.
             KeyTrain seeks to democratize digital security — making robust defense possible for organizations
             that need it most, regardless of size, budget, or in-house expertise.
           </p>
-          <p className="mt-4 text-lg leading-relaxed text-white/75">
+          <p className="mt-4 text-lg leading-relaxed text-silver">
             In addition to our software technology, we are driven to further others' knowledge on
             cybersecurity and its importance. We offer trainings within the user interface that allows
             customers to strengthen their threat awareness skills and learn best practices to mitigate and/or
@@ -60,11 +60,11 @@ export default function About() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-5 py-16 text-center">
-        <span className="text-xs font-semibold uppercase tracking-wider text-brand">Markets We Serve</span>
+      <section className="mx-auto max-w-5xl px-5 py-20 text-center">
+        <span className="text-xs font-semibold uppercase tracking-wider text-brand-hi">Markets We Serve</span>
         <div className="mt-6 flex flex-wrap justify-center gap-3">
           {markets.map((m) => (
-            <span key={m} className="rounded-full border border-line bg-panel px-5 py-2.5 text-sm font-medium text-white/80">
+            <span key={m} className="rounded-full border border-line bg-panel px-5 py-2.5 text-sm font-medium text-silver">
               {m}
             </span>
           ))}

@@ -34,7 +34,7 @@ export default function HaloRailnet() {
         subtitle="An easy-to-use, AI-powered Unified Threat Management cybersecurity platform built for anyone to understand."
       />
 
-      <section className="mx-auto max-w-4xl px-5 py-16 space-y-5 text-white/70 leading-relaxed">
+      <section className="mx-auto max-w-4xl px-5 py-20 space-y-5 text-silver leading-relaxed">
         <p>
           KeyTrain Halo is an easy-to-use, AI-powered Unified Threat Management cybersecurity platform built
           for clarity without sacrificing depth. Its intuitive dashboard shows system health and cyber risk
@@ -53,31 +53,45 @@ export default function HaloRailnet() {
           early warning of emerging attacks, enhanced visibility, and continuously evolving defenses — all
           while keeping your organization's sensitive information safe.
         </p>
-        <p className="text-sm italic text-white/40">
+        <p className="text-sm italic text-silver/60">
           *KeUTM (Knowledge-Enhanced Unified Threat Management) is a coined term by KeyTrain LLC.
         </p>
         <div>
-          <Link to="/learning" className="text-brand hover:underline font-semibold">Visit KeyTrain Learning for Pricing →</Link>
+          <Link to="/learning" className="text-brand-hi hover:underline font-semibold">Visit KeyTrain Learning for Pricing →</Link>
         </div>
       </section>
 
-      <section className="border-t border-line bg-panel">
-        <div className="mx-auto max-w-6xl px-5 py-16">
+      <section className="border-t border-line">
+        <div className="mx-auto max-w-6xl px-5 py-20">
           <h2 className="mb-10 text-center text-3xl font-bold text-white">Why We Are Different</h2>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {diffs.map((d) => (
-              <div key={d.title} className="card rounded-2xl p-6">
-                <h3 className="mb-2 font-bold text-mint">{d.title}</h3>
-                <p className="text-sm leading-relaxed text-white/60">{d.desc}</p>
+              <div key={d.title} className="card card-hover rounded-xl p-6">
+                <h3 className="mb-2 font-bold text-brand-hi">{d.title}</h3>
+                <p className="text-sm leading-relaxed text-silver">{d.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-4xl px-5 py-16 text-center">
-        <h2 className="text-2xl font-bold text-white">Available for Download</h2>
-        <p className="mt-2 text-white/60">Windows · Linux (Ubuntu) · Mac</p>
+      <section className="mx-auto max-w-4xl px-5 py-20">
+        <div className="card flex flex-col items-center gap-5 rounded-xl px-8 py-8 text-center sm:flex-row sm:justify-between sm:text-left">
+          <div>
+            <h2 className="text-lg font-bold text-white">Available for Download</h2>
+            <p className="mt-1 text-sm text-silver">Run Halo on the platforms your team already uses.</p>
+          </div>
+          <div className="flex flex-wrap justify-center gap-2">
+            {['Windows', 'Linux (Ubuntu)', 'macOS'].map((os) => (
+              <span
+                key={os}
+                className="rounded-lg border border-line bg-panel-2 px-4 py-2 text-sm font-medium text-silver"
+              >
+                {os}
+              </span>
+            ))}
+          </div>
+        </div>
       </section>
 
       <CTABanner />

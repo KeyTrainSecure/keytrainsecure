@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import PageHero from '../components/PageHero'
 import CTABanner from '../components/CTABanner'
 import itImg from '../assets/svc-it.jpg'
@@ -50,25 +51,39 @@ export default function Services() {
         subtitle="From IT services and cyber bootcamps to website development and business services and consulting."
       />
 
-      <section className="mx-auto max-w-6xl px-5 py-16 space-y-10">
+      <section className="mx-auto max-w-6xl space-y-5 px-5 py-20">
         {services.map((s) => (
-          <div key={s.title} className="card grid gap-6 rounded-2xl p-7 md:grid-cols-[220px_1fr]">
-            <img src={s.img} alt={s.title} className="h-40 w-full rounded-xl object-cover md:h-full" />
-            <div>
+          <div
+            key={s.title}
+            className="card overflow-hidden rounded-xl md:grid md:grid-cols-[240px_1fr] md:items-stretch"
+          >
+            <div className="grid place-items-center border-line bg-panel-2 p-5 md:border-r">
+              <img src={s.img} alt="" className="max-h-40 w-full rounded-lg object-contain" />
+            </div>
+            <div className="p-7 md:p-8">
               <h3 className="text-xl font-bold text-white">{s.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-white/60">{s.desc}</p>
+              <p className="mt-3 text-sm leading-relaxed text-silver">{s.desc}</p>
               {s.list && (
-                <ul className="mt-4 grid grid-cols-1 gap-x-6 gap-y-1.5 text-sm text-white/60 sm:grid-cols-2">
+                <ul className="mt-5 grid grid-cols-1 gap-x-8 gap-y-2 text-sm text-silver sm:grid-cols-2">
                   {s.list.map((item) => (
-                    <li key={item} className="flex items-start gap-2">
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-mint" />
+                    <li key={item} className="flex items-start gap-2.5">
+                      <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-brand-hi" />
                       {item}
                     </li>
                   ))}
                 </ul>
               )}
-              {s.note && <p className="mt-4 text-xs italic leading-relaxed text-white/35">{s.note}</p>}
-              <span className="mt-4 inline-block text-sm font-semibold text-brand">Contact Us for Pricing →</span>
+              {s.note && (
+                <p className="mt-5 border-l-2 border-line pl-4 text-xs italic leading-relaxed text-silver/60">
+                  {s.note}
+                </p>
+              )}
+              <Link
+                to="/contact"
+                className="mt-6 inline-block text-sm font-semibold text-white hover:text-brand-hi"
+              >
+                Contact us for pricing →
+              </Link>
             </div>
           </div>
         ))}
