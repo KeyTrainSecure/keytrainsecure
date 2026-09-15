@@ -1,16 +1,40 @@
-# React + Vite
+# KeyTrainSecure Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A modern rebuild of keytrainsecure.com, built with React + Vite + Tailwind CSS.
 
-Currently, two official plugins are available:
+## Local development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
+## Build
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm run build   # outputs to dist/
+npm run preview # serve the production build locally
+```
 
-## Expanding the Oxlint configuration
+## Deploying to GitHub Pages
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+This repo includes a GitHub Actions workflow (`.github/workflows/deploy.yml`) that
+builds and publishes the site to GitHub Pages automatically on every push to `main`.
+
+To enable it:
+
+1. Push this repo to GitHub.
+2. In the repo settings, go to **Pages** and set the source to **GitHub Actions**.
+3. Push to `main` — the site will build and deploy automatically.
+
+The site uses `HashRouter` and a relative `base: './'` in `vite.config.js`, so it
+works correctly on GitHub Pages regardless of the repository name, without needing
+a custom 404.html redirect trick.
+
+## Notes
+
+- Content and images were pulled from the original GoDaddy site (keytrainsecure.com)
+  and are stored in `src/assets/`.
+- The Contact page currently submits via `mailto:` — replace this with a real form
+  backend (Formspree, Getform, a serverless function, etc.) when ready to accept
+  live submissions, and update the destination address in `src/pages/Contact.jsx`.
