@@ -5,27 +5,39 @@ import CTABanner from '../components/CTABanner'
 const solutions = [
   {
     to: '/halo-railnet',
-    tag: 'Halo + RailNet',
-    title: 'AI-Powered Threat Intelligence',
-    desc: 'An easy-to-use platform that delivers clear insight into your systems — backed by a shared intelligence network that turns one organization’s detection into everyone’s protection.',
+    tag: 'KeyTrain Halo',
+    title: 'Clear Insight Into Your Systems',
+    desc: "KeyTrain is an easy-to-use, cybersecurity platform designed to deliver clear insights into your system. Discover the full range of Halo's features by clicking below.",
+  },
+  {
+    to: '/halo-railnet',
+    tag: 'Halo + RailNet Intelligence',
+    title: 'Shared Threat Intelligence',
+    desc: 'RailNet is a shared intelligence network that strengthens cyber defense across all protected organizations. By securely correlating anonymized threat data, attack patterns, vulnerabilities, and behavioral anomalies, it enables threats detected in one environment to improve protection for all. AI-driven analytics transform this data into actionable intelligence, delivering faster threat detection, early warning of emerging attacks, enhanced visibility, and continuously evolving defenses—without exposing sensitive organizational information.',
   },
   {
     to: '/learning',
     tag: 'KeyTrain Learning',
     title: 'Security Awareness That Sticks',
-    desc: 'Interactive training that builds real knowledge, strengthens accountability, and gives your team the confidence to apply what they learn every day.',
+    desc: 'KeyTrain Learning (KTL) is our learning management platform, offering engaging, interactive training designed to help your organization and team members stay aware of their environment. Our courses build knowledge, strengthen accountability, reinforce workplace best practices, and empower individuals to apply what they learn with confidence every day.',
   },
   {
     to: '/hooked',
     tag: 'HOOKeD',
     title: 'Phishing Simulation, Made Real',
-    desc: 'Realistic phishing campaigns that measure click rates, surface at-risk users, and route them straight into targeted follow-up training.',
+    desc: 'HOOKeD is our phishing simulation platform that helps organizations strengthen their human firewall through realistic phishing campaigns. Measure click rates, identify users who may be at greater risk, and deliver targeted follow-up training to reinforce awareness and improve security behaviors.',
   },
   {
     to: '/services',
     tag: 'Services',
     title: 'IT, Bootcamps & Business Support',
-    desc: 'From IT services and cyber bootcamps to website development and business services, discover every way KeyTrain can help your organization grow.',
+    desc: 'Discover all of the services we have to offer! From IT services, cyber bootcamps, and website development to business services and consulting. Click below to find all the ways KeyTrain can help grow your organization.',
+  },
+  {
+    to: '/work',
+    tag: 'Our Work',
+    title: 'Websites & Tools We’ve Built',
+    desc: 'See the websites we’ve designed and developed for organizations across Alabama, along with the cybersecurity platforms we build and run ourselves.',
   },
 ]
 
@@ -126,12 +138,12 @@ export default function Home() {
         </div>
         <div className="grid gap-5 md:grid-cols-2">
           {solutions.map((s) => (
-            <Link key={s.to} to={s.to} className="card card-hover group rounded-xl p-7">
+            <Link key={s.tag} to={s.to} className="card card-hover group flex flex-col rounded-xl p-7">
               <span className="text-xs font-semibold uppercase tracking-[0.15em] text-brand-hi">
                 {s.tag}
               </span>
               <h3 className="mt-3 text-xl font-bold text-white">{s.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-silver">{s.desc}</p>
+              <p className="mt-3 flex-1 text-sm leading-relaxed text-silver">{s.desc}</p>
               <span className="mt-5 inline-block text-sm font-semibold text-white group-hover:text-brand-hi">
                 Learn more →
               </span>

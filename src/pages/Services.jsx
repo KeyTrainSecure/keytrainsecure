@@ -17,17 +17,22 @@ const services = [
     img: webImg,
     title: 'Website & App Development',
     desc: 'We design and develop custom websites and applications that are secure, scalable, and built to meet your business goals. From responsive websites to tailored web and mobile applications, we deliver modern, high-performing solutions that enhance user experience and support long-term growth.',
+    work: true,
   },
   {
     img: bootImg,
     title: 'Cybersecurity Bootcamps',
-    desc: 'Level up your cyber skills and stay ahead of threats with our cybersecurity bootcamps! Our cyber bootcamps deliver immersive training designed to build real-world cybersecurity skills and knowledge, preparing participants to master advanced cyber terminology, identify and analyze threats, defend systems, and develop the confidence and capability needed to succeed.',
-    note: "KeyTrain bootcamps are designed to build cybersecurity knowledge and practical skills using industry-aligned content informed by CompTIA's Security+ (SY0-701) framework. KeyTrain is an independent training provider and is not affiliated with or endorsed by CompTIA. Participation in or completion of a KeyTrain bootcamp does not guarantee passing any certification exam, nor does it result in Security+ certification or any other credential. Certification is earned only by successfully completing the official exam administered by the certifying organization. All training materials are provided for educational purposes only and are subject to updates. Results may vary based on individual effort and experience.",
+    desc: 'Level up your cyber skills and stay ahead of threats with our cybersecurity bootcamps! Our cyber bootcamps deliver immersive training designed to build real-world cybersecurity skills and knowledge. The program prepares participants to master advanced cyber terminology, identify and analyze threats, defend systems, and develop the confidence and capability needed to succeed in today’s rapidly evolving cyber environment.',
+    note: [
+      'KeyTrain bootcamps are designed to build cybersecurity knowledge and practical skills using industry-aligned content informed by CompTIA’s Security+ (SY0-701) framework. KeyTrain is an independent training provider and is not affiliated with or endorsed by CompTIA.',
+      'Participation in or completion of a KeyTrain bootcamp does not guarantee passing any certification exam, nor does it result in Security+ certification or any other credential. Certification is earned only by successfully completing the official exam administered by the certifying organization.',
+      'All training materials are provided for educational purposes only and are subject to updates. Results may vary based on individual effort and experience.',
+    ],
   },
   {
     img: bizImg,
     title: 'Business Services',
-    desc: 'We offer a wide selection of professional business services to help your organization grow and prepare for the future. Our team is committed to helping strengthen your business foundation and support long-term success, whether you are beginning a new venture or expanding an existing one.',
+    desc: 'We offer a wide selection of professional business services to help your organization to grow and prepare for the future. Our team is committed to help strengthen your business foundation and support long-term success. Whether you are beginning a new business venture or expanding an existing one, we provide the resources to help you move forward.',
     list: [
       'Bookkeeping', 'Financial Reporting', 'Bank Reconciliations', 'Budgeting & Forecasting',
       'Financial Projections', 'Start-Up Planning (Pro forma)', 'Compensation Planning',
@@ -39,6 +44,8 @@ const services = [
     img: consImg,
     title: 'Consulting',
     desc: "Our consulting services deliver strategic, hands-on guidance tailored to each organization's unique environment and goals. We work alongside you and your team to assess risk, strengthen defenses, and implement practical solutions that drive clarity, resilience, and long-term success.",
+    tagline: 'Schedule a Consultation with Experts at KeyTrain!',
+    cta: 'Contact us for pricing & scheduling',
   },
 ]
 
@@ -74,16 +81,22 @@ export default function Services() {
                 </ul>
               )}
               {s.note && (
-                <p className="mt-5 border-l-2 border-line pl-4 text-xs italic leading-relaxed text-silver/60">
-                  {s.note}
-                </p>
+                <div className="mt-5 space-y-2 border-l-2 border-line pl-4 text-xs italic leading-relaxed text-silver/60">
+                  <p className="font-semibold not-italic text-silver">Bootcamp Terms &amp; Conditions</p>
+                  {s.note.map((n) => <p key={n}>{n}</p>)}
+                </div>
               )}
-              <Link
-                to="/contact"
-                className="mt-6 inline-block text-sm font-semibold text-white hover:text-brand-hi"
-              >
-                Contact us for pricing →
-              </Link>
+              {s.tagline && <p className="mt-5 font-semibold text-white">{s.tagline}</p>}
+              <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
+                <Link to="/contact" className="text-sm font-semibold text-white hover:text-brand-hi">
+                  {s.cta ?? 'Contact us for pricing'} →
+                </Link>
+                {s.work && (
+                  <Link to="/work" className="text-sm font-semibold text-brand-hi hover:underline">
+                    See websites we've built →
+                  </Link>
+                )}
+              </div>
             </div>
           </div>
         ))}

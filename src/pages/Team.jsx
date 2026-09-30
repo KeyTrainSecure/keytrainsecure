@@ -6,6 +6,9 @@ import adam from '../assets/team-adam.jpg'
 import dillon from '../assets/team-dillon.png'
 import caitlin from '../assets/team-caitlin.jpg'
 import ryals from '../assets/team-ryals.jpeg'
+import drake from '../assets/team-drake.jpg'
+import trey from '../assets/team-trey.jpg'
+import lauren from '../assets/team-lauren.jpg'
 
 const leadership = [
   {
@@ -44,11 +47,13 @@ const vps = [
   {
     name: 'Drake Burger',
     title: 'Vice President – Software Development',
+    img: drake,
     bio: 'Drake Burger is a software engineering and cybersecurity professional with over 5 years of experience in the technology field. He holds a Master of Science in Cybersecurity and Information Assurance from Western Governors University. He earned his Bachelor of Science in Computer Science from Auburn University. Outside of work, he enjoys attending Auburn football games, running, golfing, and spending time with friends and family.',
   },
   {
     name: 'Trey Vanhooser',
     title: 'Vice President – Cyber Operations',
+    img: trey,
     bio: 'Jerry Trey Vanhooser is a cybersecurity professional with over 8 years of experience in the technology field. He holds a bachelor’s degree in Cybersecurity Management of Operations from Athens State University, along with a minor in Computer Networking. His experience spans network architecture, systems administration, cloud infrastructure, and enterprise cybersecurity solutions. Outside of technology, he enjoys fitness, fishing, watersports, and spending time outdoors with his family.',
   },
 ]
@@ -57,6 +62,7 @@ const staff = [
   {
     name: 'Lauren Markert',
     title: 'Staff Accountant',
+    img: lauren,
     bio: 'Lauren Markert is a senior at Auburn University and will graduate in December 2026 with a degree in Accountancy. Following, she will begin to pursue her Master’s of Accountancy degree. She has internship experience doing accounting work for MSOs. Outside of school, she enjoys attending Auburn sporting events and going to the lake with her friends and family.',
   },
 ]

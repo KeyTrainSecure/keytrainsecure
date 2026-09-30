@@ -1,6 +1,27 @@
 import PageHero from '../components/PageHero'
 import CTABanner from '../components/CTABanner'
 import { Link } from 'react-router-dom'
+import dashboardImg from '../assets/ktl-dashboard.png'
+import coursesImg from '../assets/ktl-courses.png'
+import createImg from '../assets/ktl-create.png'
+
+const shots = [
+  {
+    img: dashboardImg,
+    title: 'KTL Dashboard',
+    desc: 'Manage all of your courses for your organization and view results.',
+  },
+  {
+    img: coursesImg,
+    title: 'Course Management',
+    desc: 'Browse, publish, and assign courses across every department.',
+  },
+  {
+    img: createImg,
+    title: 'Custom Courses',
+    desc: 'Create custom courses for your organization.',
+  },
+]
 
 export default function Learning() {
   return (
@@ -28,24 +49,37 @@ export default function Learning() {
           risk assessment for your organization.
         </p>
         <p className="font-semibold text-white">Contact us for more information on offered courses!</p>
+        <div className="flex flex-wrap gap-3 pt-2">
+          <a
+            href="https://keytrainlearning.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-lg bg-brand px-6 py-3 font-semibold text-white transition hover:bg-brand-hi"
+          >
+            Visit KeyTrain Learning ↗
+          </a>
+          <Link
+            to="/contact"
+            className="rounded-lg border border-line px-6 py-3 font-semibold text-white transition hover:border-brand-hi hover:text-brand-hi"
+          >
+            Contact Us
+          </Link>
+        </div>
       </section>
 
       <section className="border-t border-line">
         <div className="mx-auto max-w-6xl px-5 py-20">
           <h2 className="mb-10 text-center text-3xl font-bold text-white">Up Your Organization's Game with KTL</h2>
-          <div className="grid gap-6 sm:grid-cols-2">
-            <div className="card card-hover rounded-xl p-7">
-              <h3 className="mb-2 text-lg font-bold text-brand-hi">KTL Dashboard</h3>
-              <p className="text-sm leading-relaxed text-silver">
-                Manage all of your courses for your organization and view results.
-              </p>
-            </div>
-            <div className="card card-hover rounded-xl p-7">
-              <h3 className="mb-2 text-lg font-bold text-brand-hi">Custom Curricula</h3>
-              <p className="text-sm leading-relaxed text-silver">
-                Create custom courses tailored to your organization's needs.
-              </p>
-            </div>
+          <div className="space-y-8">
+            {shots.map((s) => (
+              <figure key={s.title} className="card overflow-hidden rounded-xl">
+                <img src={s.img} alt={`${s.title} screenshot`} loading="lazy" className="w-full bg-white" />
+                <figcaption className="border-t border-line p-6">
+                  <h3 className="text-lg font-bold text-brand-hi">{s.title}</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-silver">{s.desc}</p>
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </div>
       </section>

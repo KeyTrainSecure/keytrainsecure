@@ -18,7 +18,7 @@ export default function CTABanner() {
             Get 5% off Halo or RailNet
           </h2>
           <p className="mt-4 text-silver">
-            Secure your spot early and save. Reach out and our team will walk you through the options.
+            Contact us to secure your deal! This offer is for a limited time only.
           </p>
           <Link
             to="/contact"

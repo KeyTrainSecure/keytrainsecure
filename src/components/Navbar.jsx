@@ -10,6 +10,7 @@ const links = [
   { to: '/learning', label: 'Learning' },
   { to: '/hooked', label: 'HOOKeD' },
   { to: '/services', label: 'Services' },
+  { to: '/work', label: 'Our Work' },
 ]
 
 export default function Navbar() {

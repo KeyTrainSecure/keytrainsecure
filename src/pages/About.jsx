@@ -1,7 +1,19 @@
 import PageHero from '../components/PageHero'
 import CTABanner from '../components/CTABanner'
 
-const markets = ['Churches', 'Small Businesses', 'Healthcare', 'Other Nonprofits']
+import laptopImg from '../assets/about-laptop.jpg'
+import trainingImg from '../assets/about-training.jpg'
+import churchImg from '../assets/market-church.jpg'
+import smallBizImg from '../assets/market-smallbiz.jpg'
+import healthcareImg from '../assets/market-healthcare.jpg'
+import nonprofitImg from '../assets/market-nonprofit.jpg'
+
+const markets = [
+  { name: 'Churches', img: churchImg },
+  { name: 'Small Businesses', img: smallBizImg },
+  { name: 'Healthcare', img: healthcareImg },
+  { name: 'Other Nonprofits', img: nonprofitImg },
+]
 
 export default function About() {
   return (
@@ -39,6 +51,12 @@ export default function About() {
             successful.
           </p>
         </div>
+        <img
+          src={laptopImg}
+          alt="KeyTrain Halo on a laptop — accessible, effective, sustainable cybersecurity"
+          loading="lazy"
+          className="mt-12 w-full rounded-xl border border-line"
+        />
       </section>
 
       <section className="border-y border-line bg-panel">
@@ -57,16 +75,23 @@ export default function About() {
             avoid potential threats altogether. Along with our trainings, our bootcamps and consulting
             services allow us to further spread our outreach and knowledge on cybersecurity.
           </p>
+          <img
+            src={trainingImg}
+            alt="Someone completing security training on the KeyTrain Halo platform"
+            loading="lazy"
+            className="mt-10 w-full rounded-xl border border-line"
+          />
         </div>
       </section>
 
       <section className="mx-auto max-w-5xl px-5 py-20 text-center">
         <span className="text-xs font-semibold uppercase tracking-wider text-brand-hi">Markets We Serve</span>
-        <div className="mt-6 flex flex-wrap justify-center gap-3">
+        <div className="mt-8 grid grid-cols-2 gap-5 md:grid-cols-4">
           {markets.map((m) => (
-            <span key={m} className="rounded-full border border-line bg-panel px-5 py-2.5 text-sm font-medium text-silver">
-              {m}
-            </span>
+            <figure key={m.name} className="card rounded-xl p-4">
+              <img src={m.img} alt="" loading="lazy" className="mx-auto w-full max-w-[180px] rounded-full" />
+              <figcaption className="mt-4 text-sm font-semibold text-white">{m.name}</figcaption>
+            </figure>
           ))}
         </div>
       </section>

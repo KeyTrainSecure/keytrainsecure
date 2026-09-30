@@ -6,6 +6,7 @@ const solutions = [
   { to: '/learning', label: 'KeyTrain Learning' },
   { to: '/hooked', label: 'HOOKeD' },
   { to: '/services', label: 'Services' },
+  { to: '/work', label: 'Our Work' },
 ]
 
 const company = [
