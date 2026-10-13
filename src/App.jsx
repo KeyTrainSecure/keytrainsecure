@@ -12,6 +12,7 @@ import Services from './pages/Services'
 import Work from './pages/Work'
 import Contact from './pages/Contact'
 import NotFound from './pages/NotFound'
+import { signupRedirects } from './signup'
 
 const titles = {
   '/': 'KeyTrain — Cybersecurity Made Simple',
@@ -33,6 +34,15 @@ const legacy = {
   '/keytrain-halo-+-railnet': '/halo-railnet',
   '/keytrain-halo-%2B-railnet': '/halo-railnet',
   '/keytrain-learning': '/learning',
+}
+
+// The build serves these as static redirect pages; this covers the dev server and trailing slashes.
+function ExternalRedirect({ to }) {
+  const { search } = useLocation()
+  useEffect(() => {
+    window.location.replace(to + search)
+  }, [to, search])
+  return null
 }
 
 function RouteEffects() {
@@ -63,6 +73,9 @@ export default function App() {
             <Route path="/contact" element={<Contact />} />
             {Object.entries(legacy).map(([from, to]) => (
               <Route key={from} path={from} element={<Navigate to={to} replace />} />
+            ))}
+            {Object.entries(signupRedirects).map(([from, to]) => (
+              <Route key={from} path={from} element={<ExternalRedirect to={to} />} />
             ))}
             <Route path="*" element={<NotFound />} />
           </Routes>

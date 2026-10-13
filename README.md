@@ -28,12 +28,25 @@ route, plus `404.html` for anything else. When adding a route, add it to both `s
 the `routes` list in `vite.config.js`. Old GoDaddy URLs (`/about-our-company`, `/our-team`,
 `/contact-us`, `/keytrain-halo-%2B-railnet`, `/keytrain-learning`) redirect to their new pages.
 
+## Sign up links
+
+Signup, checkout, and accounts live in the KeyTrain Learning app
+([PatGuettler/keytrain-learning](https://github.com/PatGuettler/keytrain-learning)), not here: its
+Stripe checkout, backend, and post-checkout pages all run on keytrainlearning.com. This site only
+links into it, and every signup URL comes from `src/signup.js`.
+
+- Halo plan buttons link to `/halo/signup?tier=standalone` or `?tier=intelligence`, which preselects
+  the plan. The tier ids must match `HaloTier` in keytrain-learning.
+- Short shareable URLs (for emails, flyers, QR codes) forward to the real signup pages and keep any
+  query string: `keytrainsecure.com/signup/halo`, `keytrainsecure.com/signup/learning`. Add more in
+  `signupRedirects`; the build writes a static redirect page for each.
+
 ### Pointing keytrainsecure.com at GitHub Pages
 
 1. In the repo's **Settings → Pages**, set the custom domain to `keytrainsecure.com`.
 2. At the DNS host (GoDaddy), replace the apex `A` records with GitHub's:
    `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`,
-   and point `www` at `patguettler.github.io` with a `CNAME`.
+   and point `www` at `keytrainsecure.github.io` with a `CNAME`.
 3. **Leave the `MX` and `TXT` records alone** — they run the domain's Microsoft 365 email.
 4. Once the certificate is issued, enable **Enforce HTTPS**.
 

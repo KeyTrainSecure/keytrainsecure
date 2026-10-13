@@ -2,6 +2,7 @@ import PageHero from '../components/PageHero'
 import CTABanner from '../components/CTABanner'
 import dashboardImg from '../assets/halo-dashboard.png'
 import safeImg from '../assets/halo-safe.png'
+import { HALO_SIGNUP, haloSignup } from '../signup'
 
 const DOWNLOAD_BASE = 'https://keytrain-862e21.gitlab.io/downloads'
 
@@ -110,12 +111,10 @@ export default function HaloRailnet() {
               Download Halo ↓
             </a>
             <a
-              href="https://keytrainlearning.com/"
-              target="_blank"
-              rel="noopener noreferrer"
+              href={HALO_SIGNUP}
               className="inline-block rounded-lg bg-brand px-6 py-3 font-semibold text-white transition hover:bg-brand-hi"
             >
-              Visit KeyTrain Learning for Pricing ↗
+              Sign Up for Halo
             </a>
           </div>
         </div>
@@ -178,6 +177,27 @@ export default function HaloRailnet() {
                   </tr>
                 ))}
               </tbody>
+              <tfoot>
+                <tr className="border-t border-line">
+                  <td className="px-5 py-4 text-silver">Pricing is shown at signup.</td>
+                  <td className="bg-panel-2/60 px-3 py-4 text-center">
+                    <a
+                      href={haloSignup('standalone')}
+                      className="inline-block rounded-lg border border-line px-3 py-2 text-xs font-semibold text-white transition hover:border-brand-hi hover:text-brand-hi"
+                    >
+                      Sign up
+                    </a>
+                  </td>
+                  <td className="bg-brand/10 px-3 py-4 text-center">
+                    <a
+                      href={haloSignup('intelligence')}
+                      className="inline-block rounded-lg bg-brand px-3 py-2 text-xs font-semibold text-white transition hover:bg-brand-hi"
+                    >
+                      Sign up
+                    </a>
+                  </td>
+                </tr>
+              </tfoot>
             </table>
           </div>
         </div>
@@ -207,8 +227,8 @@ export default function HaloRailnet() {
           </div>
           <p className="mt-6 text-center text-xs text-silver/60">
             Need a license?{' '}
-            <a href="https://keytrainlearning.com/" target="_blank" rel="noopener noreferrer" className="text-brand-hi hover:underline">
-              Visit KeyTrain Learning for pricing
+            <a href={HALO_SIGNUP} className="text-brand-hi hover:underline">
+              Sign up for Halo
             </a>
             .
           </p>

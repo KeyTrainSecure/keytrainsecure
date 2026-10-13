@@ -1,6 +1,7 @@
 import PageHero from '../components/PageHero'
 import CTABanner from '../components/CTABanner'
 import { Link } from 'react-router-dom'
+import { LEARNING_SIGNUP } from '../signup'
 import dashboardImg from '../assets/ktl-dashboard.png'
 import coursesImg from '../assets/ktl-courses.png'
 import createImg from '../assets/ktl-create.png'
@@ -51,10 +52,16 @@ export default function Learning() {
         <p className="font-semibold text-white">Contact us for more information on offered courses!</p>
         <div className="flex flex-wrap gap-3 pt-2">
           <a
+            href={LEARNING_SIGNUP}
+            className="rounded-lg bg-brand px-6 py-3 font-semibold text-white transition hover:bg-brand-hi"
+          >
+            Sign Up for KeyTrain Learning
+          </a>
+          <a
             href="https://keytrainlearning.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-lg bg-brand px-6 py-3 font-semibold text-white transition hover:bg-brand-hi"
+            className="rounded-lg border border-line px-6 py-3 font-semibold text-white transition hover:border-brand-hi hover:text-brand-hi"
           >
             Visit KeyTrain Learning ↗
           </a>

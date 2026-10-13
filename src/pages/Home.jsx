@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import mark from '../assets/logo-full.png'
 import CTABanner from '../components/CTABanner'
+import GetStarted from '../components/GetStarted'
 
 const solutions = [
   {
@@ -101,17 +102,17 @@ export default function Home() {
               accessible platform — built so any organization can defend itself with confidence.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
-              <Link
-                to="/halo-railnet"
+              <a
+                href="#get-started"
                 className="rounded-lg bg-brand px-6 py-3 font-semibold text-white transition hover:bg-brand-hi"
               >
-                Explore Halo
-              </Link>
+                Get Started
+              </a>
               <Link
-                to="/contact"
+                to="/halo-railnet"
                 className="rounded-lg border border-line px-6 py-3 font-semibold text-white transition hover:border-brand-hi hover:text-brand-hi"
               >
-                Contact Us
+                Explore Halo
               </Link>
             </div>
             <dl className="mt-12 grid max-w-xl gap-x-8 gap-y-5 border-t border-line pt-8 sm:grid-cols-3">
@@ -127,7 +128,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-5 py-24">
+      <GetStarted />
+
+      <section className="mx-auto max-w-7xl border-t border-line px-5 py-24">
         <div className="mb-14 max-w-2xl">
           <span className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-hi">
             Our Solutions
