@@ -42,33 +42,102 @@ export default function Privacy() {
 
         <Section id="google-user-data" title="2. Google user data (Gmail)">
           <p>
-            Halo can connect to a Gmail account so it can detect phishing and alert you about suspicious email.
-            Connecting Gmail is optional, and Halo only accesses Gmail after you sign in with Google and grant
-            permission on Google's consent screen.
+            Halo can connect to a Gmail account to detect phishing and warn you about dangerous email. Connecting
+            Gmail is optional. Halo only accesses Gmail after you sign in with Google and grant permission on
+            Google's consent screen.
           </p>
+
           <h3 className="pt-2 text-lg font-semibold text-white">What we access</h3>
           <p>
-            Halo requests the Gmail <code className="text-white">gmail.modify</code> permission. It lets Halo read
-            the messages in your mailbox (senders, subjects, headers, message content, links, and attachments) and
-            change how a message is organized, for example by applying a label to it or moving it out of your inbox.
+            Halo requests one Google permission, Gmail <code className="text-white">gmail.modify</code>, which lets
+            it read and organize the messages in your mailbox. Halo reads:
           </p>
+          <ul>
+            <li>Your Gmail address, to show which account is connected.</li>
+            <li>
+              Each message's sender, recipients, reply-to address, subject, date, preview snippet, labels, and
+              conversation ID.
+            </li>
+            <li>The text of each message, and the links in it.</li>
+            <li>
+              The complete message, including attachments, only when Halo rewrites a message as described below.
+              Attachments are not analyzed.
+            </li>
+          </ul>
+          <p>
+            By default, Halo checks new messages across all of your mail, including Spam and Trash; you can
+            narrow this in Halo's settings. It does not scan mail that was already in your mailbox when you
+            connected.
+          </p>
+
           <h3 className="pt-2 text-lg font-semibold text-white">How we use it</h3>
           <ul>
-            <li>To scan incoming messages for phishing, malicious links, and malicious attachments.</li>
-            <li>To alert you in Halo when a message looks dangerous.</li>
-            <li>To flag or move a message that Halo identifies as phishing, so you are less likely to open it.</li>
+            <li>
+              <strong className="text-white">Detect phishing.</strong> Halo analyzes each new message for signs of
+              phishing, such as suspicious senders and dangerous links.
+            </li>
+            <li>
+              <strong className="text-white">Alert you.</strong> Halo shows an alert on your device when a message
+              looks dangerous.
+            </li>
+            <li>
+              <strong className="text-white">Mark dangerous messages.</strong> When you connect, Halo creates a
+              "HALO DANGER" label in your Gmail. By default it applies that label to messages it flags. If you turn
+              on these options in Halo, it can also move flagged messages to Spam, or add a warning banner or
+              subject prefix. To add a warning, Halo saves a marked copy of the message in your mailbox and moves
+              the original to Trash.
+            </li>
+            <li>
+              <strong className="text-white">Undo a false alarm.</strong> When you tell Halo a message is safe, or
+              move a flagged message out of Spam, Halo removes its label and Spam marking, returns the message to
+              your inbox, and replaces it with a clean copy, moving the marked version to Trash.
+            </li>
           </ul>
-          <p>We use Gmail data only to provide these user-facing features of Halo, and for no other purpose.</p>
-          <h3 className="pt-2 text-lg font-semibold text-white">Storage and retention</h3>
           <p>
-            We do not store the contents of your email. Messages are analyzed when Halo scans your mailbox and are
-            discarded once the scan is complete.
+            Halo never permanently deletes your email. We use Gmail data only to provide these features to you,
+            and for no other purpose.
           </p>
+
+          <h3 className="pt-2 text-lg font-semibold text-white">Where it is processed</h3>
+          <p>
+            Your email is analyzed on your own device, by Halo's built-in rules. Email content is never sent to
+            KeyTrain's servers or to any artificial intelligence service.
+          </p>
+          <p>
+            Signing in with Google uses a secure exchange in which your Google access tokens pass through
+            KeyTrain's token service. That service adds Halo's app credentials, forwards the request to Google,
+            and returns the tokens to your device. It does not store them. On your device, the long-lived token is
+            kept encrypted in your operating system's secure credential store (Windows DPAPI, macOS Keychain, or
+            the Linux keyring), and the short-lived access token is kept only in memory.
+          </p>
+
+          <h3 className="pt-2 text-lg font-semibold text-white">What is stored, and where</h3>
+          <p>Message text is never saved. Halo keeps the following on your device only:</p>
+          <ul>
+            <li>
+              A record of each message it checks: the message and conversation IDs, the connected account, the
+              sender, the subject, and when it was received.
+            </li>
+            <li>Its alerts, which include the message subject and the reasons the message was flagged.</li>
+            <li>Senders you have marked as safe.</li>
+            <li>An activity log that includes alert titles, kept for up to 14 days.</li>
+          </ul>
+          <p>
+            These records stay on your device until you delete them (see "Disconnecting Gmail and deleting your
+            data" below). None of them are sent to KeyTrain.
+          </p>
+
           <h3 className="pt-2 text-lg font-semibold text-white">Sharing</h3>
           <p>
-            We do not sell Gmail data, and we do not share or transfer it to third parties. Gmail data is not
-            included in RailNet threat intelligence.
+            We do not sell, share, or transfer Gmail data to anyone. RailNet threat intelligence receives only
+            aggregate counts of detections, never your email content, email addresses, subjects, or links.
           </p>
+          <p>
+            If you choose to ask us about an alert, Halo opens a draft in your own email app addressed to KeyTrain
+            support. It includes the alert's details, including the message subject. Nothing is sent unless you
+            send that email yourself.
+          </p>
+
           <h3 className="pt-2 text-lg font-semibold text-white">What we never do with Gmail data</h3>
           <ul>
             <li>Use it to serve advertising, including personalized or retargeted ads.</li>
@@ -78,8 +147,10 @@ export default function Privacy() {
             <li>
               Allow people to read it, unless you give us permission for a specific message, it is necessary for
               security purposes such as investigating abuse, or it is required to comply with applicable law.
+              KeyTrain staff have no tool that shows your email or your Halo alerts.
             </li>
           </ul>
+
           <h3 className="pt-2 text-lg font-semibold text-white">Limited Use</h3>
           <p className="rounded-xl border border-line bg-panel p-5 text-white">
             KeyTrain's use and transfer to any other app of information received from Google APIs will adhere to
@@ -89,19 +160,34 @@ export default function Privacy() {
             </a>
             , including the Limited Use requirements.
           </p>
-          <h3 className="pt-2 text-lg font-semibold text-white">Disconnecting Gmail</h3>
-          <p>
-            You can disconnect Gmail in Halo at any time, or remove KeyTrain's access from your Google Account at{' '}
-            <a
-              href="https://myaccount.google.com/permissions"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-brand-hi hover:underline"
-            >
-              myaccount.google.com/permissions
-            </a>
-            . Once access is removed, Halo can no longer read or change your email.
-          </p>
+
+          <h3 className="pt-2 text-lg font-semibold text-white">Disconnecting Gmail and deleting your data</h3>
+          <ul>
+            <li>
+              Disconnect Gmail in Halo at any time. Halo stops checking your mail, asks Google to revoke its access,
+              and deletes its token from your device.
+            </li>
+            <li>
+              You can also remove KeyTrain's access from your Google Account at{' '}
+              <a
+                href="https://myaccount.google.com/permissions"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brand-hi hover:underline"
+              >
+                myaccount.google.com/permissions
+              </a>
+              .
+            </li>
+            <li>
+              The records Halo keeps on your device are in the <code className="text-white">.halo</code> folder in
+              your user's home folder. Delete that folder to remove them. Uninstalling Halo does not delete it.
+            </li>
+            <li>
+              The "HALO DANGER" label stays in your Gmail after you disconnect. You can delete it in Gmail's
+              settings.
+            </li>
+          </ul>
         </Section>
 
         <Section id="information-we-collect" title="3. Other information we collect">
@@ -116,8 +202,9 @@ export default function Privacy() {
             </li>
             <li>
               <strong className="text-white">Device security information:</strong> Halo collects information about
-              the devices it protects, such as system health, installed software and patch levels, network activity,
-              and threats it detects.
+              the devices it protects, such as system health, installed software and patch levels, running
+              processes, network activity, and threats it detects. Some of it, such as process activity, is sent to
+              KeyTrain to provide protection.
             </li>
             <li>
               <strong className="text-white">Training information:</strong> KeyTrain Learning and HOOKeD record
@@ -147,9 +234,8 @@ export default function Privacy() {
               processing, and email delivery, under agreements that limit their use of it.
             </li>
             <li>
-              Through RailNet, as de-identified threat indicators from Halo device detections (for example, a
-              malicious file signature), so a threat found in one environment helps protect others. RailNet does not
-              include Gmail data.
+              Through RailNet, as aggregate counts of detections, so a threat found in one environment helps
+              protect others. RailNet does not include Gmail data.
             </li>
             <li>With your organization's administrators, for accounts your organization manages.</li>
             <li>When required by law, or to protect the rights, safety, and security of our users and KeyTrain.</li>
@@ -168,7 +254,8 @@ export default function Privacy() {
           <p>
             We keep account, billing, and training information while your account is active and as needed to meet
             legal and accounting obligations. You can ask us to delete your account and the information associated
-            with it by emailing {mail}. Email content from Gmail is not stored, as described in section 2.
+            with it by emailing {mail}. Gmail-related records are kept only on your device; section 2 explains how
+            to delete them.
           </p>
         </Section>
 

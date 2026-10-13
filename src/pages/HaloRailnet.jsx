@@ -156,14 +156,17 @@ export default function HaloRailnet() {
               connect, you sign in with Google and approve access on Google's consent screen.
             </p>
             <ul className="space-y-2 [&_li]:ml-5 [&_li]:list-disc">
-              <li>Halo scans incoming email for phishing, malicious links, and malicious attachments.</li>
+              <li>Halo checks each new email for phishing, such as suspicious senders and dangerous links.</li>
               <li>It alerts you in Halo when a message looks dangerous.</li>
-              <li>It can label or move a phishing message out of your inbox so you are less likely to open it.</li>
+              <li>
+                It labels dangerous messages "HALO DANGER", and can optionally move them to Spam or add a warning
+                banner, so you are less likely to open them.
+              </li>
             </ul>
             <p>
-              Halo uses your email only to protect you. We do not store your email content, sell it, share it, or
-              use it for advertising or to train AI models. You can disconnect Gmail at any time. Read exactly how
-              Halo handles Google user data in our{' '}
+              Your email is analyzed on your own device and is never sent to KeyTrain. Halo uses it only to
+              protect you: we never sell or share it, or use it for advertising or to train AI models. You can
+              disconnect Gmail at any time. Read exactly how Halo handles Google user data in our{' '}
               <Link to="/privacy#google-user-data" className="text-brand-hi hover:underline">Privacy Policy</Link>.
             </p>
           </div>
