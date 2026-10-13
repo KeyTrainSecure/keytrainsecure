@@ -12,6 +12,7 @@ import Services from './pages/Services'
 import Work from './pages/Work'
 import Contact from './pages/Contact'
 import NotFound from './pages/NotFound'
+import Privacy from './pages/Privacy'
 import { signupRedirects } from './signup'
 
 const titles = {
@@ -24,6 +25,7 @@ const titles = {
   '/services': 'Services — KeyTrain',
   '/work': 'Our Work — KeyTrain',
   '/contact': 'Contact Us — KeyTrain',
+  '/privacy': 'Privacy Policy — KeyTrain',
 }
 
 // URLs from the previous GoDaddy site, kept so existing links and search results still land.
@@ -46,11 +48,14 @@ function ExternalRedirect({ to }) {
 }
 
 function RouteEffects() {
-  const { pathname } = useLocation()
+  const { pathname, hash } = useLocation()
   useEffect(() => {
-    window.scrollTo(0, 0)
+    // Land on the linked section for /page#section, otherwise start at the top.
+    const target = hash && document.getElementById(decodeURIComponent(hash.slice(1)))
+    if (target) target.scrollIntoView()
+    else window.scrollTo(0, 0)
     document.title = titles[pathname.replace(/(.)\/+$/, '$1')] ?? 'Page Not Found — KeyTrain'
-  }, [pathname])
+  }, [pathname, hash])
   return null
 }
 
@@ -71,6 +76,7 @@ export default function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/work" element={<Work />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/privacy" element={<Privacy />} />
             {Object.entries(legacy).map(([from, to]) => (
               <Route key={from} path={from} element={<Navigate to={to} replace />} />
             ))}

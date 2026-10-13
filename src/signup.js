@@ -4,6 +4,8 @@ const APP = 'https://keytrainlearning.com'
 
 export const LEARNING_SIGNUP = `${APP}/signup/standard`
 export const HALO_SIGNUP = `${APP}/halo/signup`
+// The Terms of Service every signup accepts live in the app too.
+export const TERMS_URL = `${APP}/terms`
 
 // Tier ids must match HaloTier in keytrain-learning, which preselects the plan from ?tier=.
 export const haloSignup = (tier) => `${HALO_SIGNUP}?tier=${tier}`

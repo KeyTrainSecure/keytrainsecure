@@ -10,7 +10,7 @@ import { signupRedirects } from './src/signup.js'
 // without a trailing-slash redirect. Anything else falls through to 404.html, which is also
 // the app and renders the Not Found page or a redirect.
 const routes = [
-  'about', 'team', 'halo-railnet', 'learning', 'hooked', 'services', 'work', 'contact',
+  'about', 'team', 'halo-railnet', 'learning', 'hooked', 'services', 'work', 'contact', 'privacy',
   'about-our-company', 'our-team', 'contact-us', 'keytrain-learning',
 ]
 

@@ -2,6 +2,7 @@ import PageHero from '../components/PageHero'
 import CTABanner from '../components/CTABanner'
 import dashboardImg from '../assets/halo-dashboard.png'
 import safeImg from '../assets/halo-safe.png'
+import { Link } from 'react-router-dom'
 import { HALO_SIGNUP, haloSignup } from '../signup'
 
 const DOWNLOAD_BASE = 'https://keytrain-862e21.gitlab.io/downloads'
@@ -142,6 +143,29 @@ export default function HaloRailnet() {
                 <p className="text-sm leading-relaxed text-silver">{d.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="gmail" className="scroll-mt-24 border-t border-line">
+        <div className="mx-auto max-w-4xl px-5 py-20">
+          <h2 className="mb-6 text-center text-3xl font-bold text-white">Gmail Phishing Protection</h2>
+          <div className="space-y-5 leading-relaxed text-silver">
+            <p>
+              Halo can connect to your Gmail account to catch phishing before you click. When you choose to
+              connect, you sign in with Google and approve access on Google's consent screen.
+            </p>
+            <ul className="space-y-2 [&_li]:ml-5 [&_li]:list-disc">
+              <li>Halo scans incoming email for phishing, malicious links, and malicious attachments.</li>
+              <li>It alerts you in Halo when a message looks dangerous.</li>
+              <li>It can label or move a phishing message out of your inbox so you are less likely to open it.</li>
+            </ul>
+            <p>
+              Halo uses your email only to protect you. We do not store your email content, sell it, share it, or
+              use it for advertising or to train AI models. You can disconnect Gmail at any time. Read exactly how
+              Halo handles Google user data in our{' '}
+              <Link to="/privacy#google-user-data" className="text-brand-hi hover:underline">Privacy Policy</Link>.
+            </p>
           </div>
         </div>
       </section>

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import wordmark from '../assets/logo-wordmark.png'
+import { TERMS_URL } from '../signup'
 
 const solutions = [
   { to: '/halo-railnet', label: 'Halo + RailNet' },
@@ -81,8 +82,12 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 border-t border-line pt-6 text-xs text-silver/60">
-          Copyright © {new Date().getFullYear()} KeyTrainSecure.com — All Rights Reserved.
+        <div className="mt-14 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-6 text-xs text-silver/60">
+          <span>Copyright © {new Date().getFullYear()} KeyTrainSecure.com — All Rights Reserved.</span>
+          <span className="flex gap-5">
+            <Link to="/privacy" className="transition hover:text-brand-hi">Privacy Policy</Link>
+            <a href={TERMS_URL} className="transition hover:text-brand-hi">Terms of Service</a>
+          </span>
         </div>
       </div>
     </footer>
