@@ -3,7 +3,7 @@ import PageHero from '../components/PageHero'
 import { TERMS_URL } from '../signup'
 
 const EFFECTIVE_DATE = 'October 13, 2026'
-const CONTACT = 'inquiries@keytrainsecure.com'
+const CONTACT = 'connect@keytrainsecure.com'
 const USER_DATA_POLICY = 'https://developers.google.com/terms/api-services-user-data-policy'
 
 const mail = (
