@@ -3,7 +3,7 @@ import PageHero from '../components/PageHero'
 
 // Inbox that receives contact-form submissions. FormSubmit (formsubmit.co) emails this
 // address a one-time activation link on the first submission; click it to start delivery.
-const CONTACT_EMAIL = 'hello@keytrainsecure.com'
+const CONTACT_EMAIL = 'connect@keytrainsecure.com'
 const ENDPOINT = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`
 
 const empty = { name: '', email: '', phone: '', message: '', _honey: '' }
