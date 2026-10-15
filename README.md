@@ -23,10 +23,14 @@ The workflow in `.github/workflows/deploy.yml` builds and publishes `dist/` to G
 
 The site is served from the custom domain in `public/CNAME` (`keytrainsecure.com`) and uses
 real paths (`/about`, `/halo-railnet`, …) via `BrowserRouter`. Because Pages only serves static
-files, the build (see `spaRoutes` in `vite.config.js`) writes a copy of `index.html` for every
-route, plus `404.html` for anything else. When adding a route, add it to both `src/App.jsx` and
-the `routes` list in `vite.config.js`. Old GoDaddy URLs (`/about-our-company`, `/our-team`,
-`/contact-us`, `/keytrain-halo-%2B-railnet`, `/keytrain-learning`) redirect to their new pages.
+files, the build (see `sitePages` in `vite.config.js`) writes a copy of `index.html` for every
+page, each with its own `<title>` and canonical URL so Google indexes it as its own page, plus
+`404.html` (marked `noindex`) for anything else. It also generates `sitemap.xml`.
+
+Pages and old URLs are listed once, in `src/routes.js`. When adding a page, add it to `pages`
+there and give it a `<Route>` in `src/App.jsx`. Old GoDaddy URLs go in `legacy`; each gets a
+redirect page to its new page (for example `/consulting` and `/consulting-&-it-services` go to
+`/services`).
 
 ## Sign up links
 

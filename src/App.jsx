@@ -14,29 +14,7 @@ import Contact from './pages/Contact'
 import NotFound from './pages/NotFound'
 import Privacy from './pages/Privacy'
 import { signupRedirects } from './signup'
-
-const titles = {
-  '/': 'KeyTrain — Cybersecurity Made Simple',
-  '/about': 'About Us — KeyTrain',
-  '/team': 'Our Team — KeyTrain',
-  '/halo-railnet': 'Halo + RailNet Intelligence — KeyTrain',
-  '/learning': 'KeyTrain Learning — KeyTrain',
-  '/hooked': 'HOOKeD Phishing Simulator — KeyTrain',
-  '/services': 'Services — KeyTrain',
-  '/work': 'Our Work — KeyTrain',
-  '/contact': 'Contact Us — KeyTrain',
-  '/privacy': 'Privacy Policy — KeyTrain',
-}
-
-// URLs from the previous GoDaddy site, kept so existing links and search results still land.
-const legacy = {
-  '/about-our-company': '/about',
-  '/our-team': '/team',
-  '/contact-us': '/contact',
-  '/keytrain-halo-+-railnet': '/halo-railnet',
-  '/keytrain-halo-%2B-railnet': '/halo-railnet',
-  '/keytrain-learning': '/learning',
-}
+import { legacy, pages } from './routes'
 
 // The build serves these as static redirect pages; this covers the dev server and trailing slashes.
 function ExternalRedirect({ to }) {
@@ -54,7 +32,7 @@ function RouteEffects() {
     const target = hash && document.getElementById(decodeURIComponent(hash.slice(1)))
     if (target) target.scrollIntoView()
     else window.scrollTo(0, 0)
-    document.title = titles[pathname.replace(/(.)\/+$/, '$1')] ?? 'Page Not Found — KeyTrain'
+    document.title = pages[pathname.replace(/(.)\/+$/, '$1')] ?? 'Page Not Found — KeyTrain'
   }, [pathname, hash])
   return null
 }
@@ -77,9 +55,12 @@ export default function App() {
             <Route path="/work" element={<Work />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy" element={<Privacy />} />
-            {Object.entries(legacy).map(([from, to]) => (
-              <Route key={from} path={from} element={<Navigate to={to} replace />} />
-            ))}
+            {Object.entries(legacy).flatMap(([from, to]) =>
+              // Also match the percent-encoded form old links use, e.g. %2B for + and %26 for &.
+              [...new Set([from, encodeURI(from).replace(/\+/g, '%2B').replace(/&/g, '%26')])].map((path) => (
+                <Route key={path} path={path} element={<Navigate to={to} replace />} />
+              )),
+            )}
             {Object.entries(signupRedirects).map(([from, to]) => (
               <Route key={from} path={from} element={<ExternalRedirect to={to} />} />
             ))}
