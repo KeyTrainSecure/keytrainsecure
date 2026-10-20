@@ -58,6 +58,18 @@ links into it, and every signup URL comes from `src/signup.js`.
 
 - Halo installers are hosted on GitLab Pages (`keytrain-862e21.gitlab.io/downloads`) and
   always point at the latest build; the download buttons live in `src/pages/HaloRailnet.jsx`.
-- The contact form posts to [FormSubmit](https://formsubmit.co). The destination inbox is
-  `CONTACT_EMAIL` in `src/pages/Contact.jsx`; the first submission sends that inbox an
-  activation link that must be clicked before messages are delivered.
+- The contact form uses the Learning app's public `send-marketing-contact` Supabase function
+  with `source: keytrain-website`. The function fixes the recipient to
+  `connect@keytrainsecure.com`, sends through Resend, and applies rate limits. No FormSubmit
+  activation or browser API key is needed. `CONTACT_EMAIL` in `src/contact.js` is the
+  fallback mailto address; the server controls delivery.
+- Deploy the matching function from `keytrain-learning` to production **before** publishing
+  this website change. It adds the website source, Connect routing, and CORS for the apex/www
+  domains. The previous function routes all contact messages to the Learning support inbox.
+- Local/staging previews can set
+  `VITE_CONTACT_ENDPOINT=https://rzrsudrdpnabpseatclm.supabase.co/functions/v1/send-marketing-contact`
+  before building or starting Vite (use localhost:5173 for CORS). The default is production.
+  Pushing the `staging` branch does not publish the public site; Pages deploys from `main`.
+- Run `npm test`, `npm run lint`, and `npm run build` before publishing. Email-provider
+  acceptance does not guarantee inbox placement; verify delivery with an authorized form
+  submission after deployment.

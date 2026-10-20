@@ -1,38 +1,32 @@
 import { useState } from 'react'
 import PageHero from '../components/PageHero'
-
-// Inbox that receives contact-form submissions. FormSubmit (formsubmit.co) emails this
-// address a one-time activation link on the first submission; click it to start delivery.
-const CONTACT_EMAIL = 'connect@keytrainsecure.com'
-const ENDPOINT = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`
+import { CONTACT_EMAIL, submitContact } from '../contact'
 
 const empty = { name: '', email: '', phone: '', message: '', _honey: '' }
 
 export default function Contact() {
   const [form, setForm] = useState(empty)
   const [status, setStatus] = useState('idle') // idle | sending | sent | error
+  const [error, setError] = useState('')
 
   const set = (key) => (e) => setForm({ ...form, [key]: e.target.value })
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if (status === 'sending') return
+    if (!form.name.trim() || !form.message.trim()) {
+      setError('Please enter your name and a message.')
+      setStatus('error')
+      return
+    }
+    setError('')
     setStatus('sending')
     try {
-      const res = await fetch(ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          ...form,
-          _subject: `KeyTrain website contact: ${form.name}`,
-          _template: 'table',
-          _captcha: 'false',
-        }),
-      })
-      const data = await res.json().catch(() => ({}))
-      if (!res.ok || data.success === false || data.success === 'false') throw new Error(data.message)
+      await submitContact(form)
       setForm(empty)
       setStatus('sent')
-    } catch {
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Could not send your message.')
       setStatus('error')
     }
   }
@@ -46,7 +40,7 @@ export default function Contact() {
 
       <section className="mx-auto max-w-xl px-5 py-20">
         {status === 'sent' ? (
-          <div className="card rounded-xl p-8 text-center">
+          <div className="card rounded-xl p-8 text-center" role="status">
             <h2 className="text-2xl font-bold text-white">Thank you!</h2>
             <p className="mt-3 text-silver">Your message has been sent. Our team will be in touch soon.</p>
             <button
@@ -60,13 +54,14 @@ export default function Contact() {
           <form onSubmit={handleSubmit} className="card space-y-5 rounded-xl p-8">
             <div>
               <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-silver">Name*</label>
-              <input id="name" required autoComplete="name" value={form.name} onChange={set('name')} className={input} />
+              <input id="name" required maxLength={200} autoComplete="name" value={form.name} onChange={set('name')} className={input} />
             </div>
             <div>
               <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-silver">Email*</label>
               <input
                 id="email"
                 required
+                maxLength={254}
                 type="email"
                 autoComplete="email"
                 value={form.email}
@@ -76,11 +71,11 @@ export default function Contact() {
             </div>
             <div>
               <label htmlFor="phone" className="mb-1.5 block text-sm font-medium text-silver">Phone</label>
-              <input id="phone" type="tel" autoComplete="tel" value={form.phone} onChange={set('phone')} className={input} />
+              <input id="phone" type="tel" maxLength={50} autoComplete="tel" value={form.phone} onChange={set('phone')} className={input} />
             </div>
             <div>
-              <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-silver">Message</label>
-              <textarea id="message" rows={4} value={form.message} onChange={set('message')} className={input} />
+              <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-silver">Message*</label>
+              <textarea id="message" required maxLength={5000} rows={4} value={form.message} onChange={set('message')} className={input} />
             </div>
             {/* Honeypot: hidden from people, filled in by spam bots */}
             <input
@@ -102,7 +97,7 @@ export default function Contact() {
             </button>
             {status === 'error' && (
               <p className="text-center text-sm text-brand-hi" role="alert">
-                Something went wrong sending your message. Please try again, or email us at{' '}
+                {error} You can also email us at{' '}
                 <a href={`mailto:${CONTACT_EMAIL}`} className="underline">{CONTACT_EMAIL}</a>.
               </p>
             )}
