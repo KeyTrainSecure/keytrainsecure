@@ -10,6 +10,7 @@ import Learning from './pages/Learning'
 import Hooked from './pages/Hooked'
 import Services from './pages/Services'
 import Work from './pages/Work'
+import Pricing from './pages/Pricing'
 import Contact from './pages/Contact'
 import NotFound from './pages/NotFound'
 import Privacy from './pages/Privacy'
@@ -53,6 +54,7 @@ export default function App() {
             <Route path="/hooked" element={<Hooked />} />
             <Route path="/services" element={<Services />} />
             <Route path="/work" element={<Work />} />
+            <Route path="/pricing" element={<Pricing />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy" element={<Privacy />} />
             {Object.entries(legacy).flatMap(([from, to]) =>

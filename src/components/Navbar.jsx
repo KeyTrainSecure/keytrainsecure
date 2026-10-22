@@ -58,6 +58,7 @@ const links = [
   { to: '/hooked', label: 'HOOKeD' },
   { to: '/services', label: 'Services' },
   { to: '/work', label: 'Our Work' },
+  { to: '/pricing', label: 'Pricing' },
 ]
 
 export default function Navbar() {

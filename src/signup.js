@@ -1,11 +1,11 @@
 // Signup lives in the KeyTrain Learning app (keytrainlearning.com): its Stripe checkout, account
 // creation, and post-checkout pages all run there. This site only links into it.
-const APP = 'https://keytrainlearning.com'
+export const LEARNING_APP = 'https://keytrainlearning.com'
 
-export const LEARNING_SIGNUP = `${APP}/signup/standard`
-export const HALO_SIGNUP = `${APP}/halo/signup`
+export const LEARNING_SIGNUP = `${LEARNING_APP}/signup/standard`
+export const HALO_SIGNUP = `${LEARNING_APP}/halo/signup`
 // The Terms of Service every signup accepts live in the app too.
-export const TERMS_URL = `${APP}/terms`
+export const TERMS_URL = `${LEARNING_APP}/terms`
 
 // Tier ids must match HaloTier in keytrain-learning, which preselects the plan from ?tier=.
 export const haloSignup = (tier) => `${HALO_SIGNUP}?tier=${tier}`

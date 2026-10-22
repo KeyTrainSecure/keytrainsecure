@@ -11,6 +11,7 @@ export const pages = {
   '/hooked': 'HOOKeD Phishing Simulator — KeyTrain',
   '/services': 'Services — KeyTrain',
   '/work': 'Our Work — KeyTrain',
+  '/pricing': 'Pricing — KeyTrain',
   '/contact': 'Contact Us — KeyTrain',
   '/privacy': 'Privacy Policy — KeyTrain',
 }
